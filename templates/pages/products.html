@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+<section class="products">
+{% block content %}
+  <h1>Our Products</h1>
+  <div class="product">
+    {% if products %} 
+
+    {% for product in products %}
+
+    <div class="product-item">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <a href="{% url 'single_product' product.id %}">View Details</a>
+    </div>
+    {% endfor %}
+    <section class="alert">
+        {% else %}
+        <p>No products available.</p>
+        {% endif %}
+    </section>
+
+{% endblock %}
+</section>

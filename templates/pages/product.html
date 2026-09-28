@@ -1,0 +1,11 @@
+{% extends "layouts/base.html" %}
+
+<pre>
+    {% block title %} {{ product.name }}{% endblock%}
+</pre>
+<section class="home">
+  {% block content %}
+  <h1>{{ product.name }}</h1>
+  <p>{{ product.description }}</p>
+  {% endblock %}
+</section>
