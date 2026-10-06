@@ -1,6 +1,26 @@
 {% extends "layouts/base.html" %}
 <section class="products">
 {% block content %}
+
+
+  {% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+{% if form_errors %}
+    {{ form_errors }}
+{% endif %}
+  <form method="POST"  enctype="multipart/form-data">
+  
+    {% csrf_token %}
+
+    {{ pform }}
+
+
+    <input type="submit" value="Add product" />
+
+  </form>
+
   <h1>Our Products</h1>
   <div class="product">
     {% if products %} 
