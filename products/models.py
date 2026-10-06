@@ -1,7 +1,18 @@
 from django.db import models
+from django.db.models import Model
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.name
+    
+        
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -10,6 +21,11 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
     image = models.ImageField(upload_to='photos/%Y/%m/%d', null=True, blank=True)
+    category = models.ForeignKey(
+          Category, on_delete=models.SET_NULL, null=True
+    )
 
     def __str__(self):
         return self.name
+    
+    
